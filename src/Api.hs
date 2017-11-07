@@ -15,7 +15,7 @@ import           Prelude.Compat
 import           Servant
 
 newtype UserId = UserId
-  { id :: String
+  { userId :: String
   } deriving (Show, Generic)
 
 instance FromJSON UserId
