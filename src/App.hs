@@ -8,14 +8,25 @@
 module App where
 
 import           Api
+import           Control.Monad.IO.Class   (liftIO)
 import           Network.Wai.Handler.Warp
-import           Prelude                  ()
-import           Prelude.Compat
+import           Prelude
 import           Servant
 import           System.IO.Error
 
+createUser :: User -> Handler Status
+createUser user = do
+  _ <- liftIO $ print user
+  return (Status 200)
+
+readUser :: UserId -> Handler User
+readUser = undefined
+
+deleteUser :: UserId -> Handler Status
+deleteUser = undefined
+
 server :: Server UserApi
-server = undefined
+server = createUser :<|> readUser :<|> deleteUser
 
 startServer :: IO ()
 startServer =

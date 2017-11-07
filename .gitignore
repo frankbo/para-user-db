@@ -1,3 +1,4 @@
 .idea/
 .stack-work/
 para-user-db.iml
+cabal.config

@@ -14,6 +14,12 @@ import           Prelude          ()
 import           Prelude.Compat
 import           Servant
 
+newtype UserId = UserId
+  { id :: String
+  } deriving (Show, Generic)
+
+instance FromJSON UserId
+
 data User = User
   { email :: String
   , tags  :: [String]
@@ -30,7 +36,7 @@ newtype Status = Status
 instance ToJSON Status
 
 type UserApi
-   = "create" :> ReqBody '[ JSON] User :> Post '[ JSON] Status :<|> "read" :> ReqBody '[ JSON] User :> Post '[ JSON] User :<|> "delete" :> ReqBody '[ JSON] User :> Post '[ JSON] Status
+   = "create" :> ReqBody '[ JSON] User :> Post '[ JSON] Status :<|> "read" :> ReqBody '[ JSON] UserId :> Post '[ JSON] User :<|> "delete" :> ReqBody '[ JSON] UserId :> Post '[ JSON] Status
 
 userApi :: Proxy UserApi
 userApi = Proxy
