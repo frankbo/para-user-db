@@ -8,7 +8,6 @@
 module App where
 
 import           Api
-import           ClientConnections
 import           Network.Wai.Handler.Warp
 import           Prelude                  ()
 import           Prelude.Compat
